@@ -186,7 +186,7 @@ namespace baibit {
         0x1041041, // 5C
         0x008C7E0, // 5D
         0x0044100, // 5E
-        0x0108421, //
+        0x0108421]/*, //
         0x0082000, // 60
         0x064A5E1, // 61
         0x1F29440, // 62
@@ -218,7 +218,7 @@ namespace baibit {
         0x00F8000, // 7C
         0x11F9000, // 7D
         0x0021042] // 7E
-
+*/
     const baibitfontskana = [
         0x0000000, // A0
         0x0228800, // A1
@@ -302,5 +302,15 @@ namespace baibit {
         if (mojicode >= 0x20 && mojicode <= 0x7e)
             allled(baibitFontsAlfa[mojicode - 0x20])
     }
-
+    /**
+     * TODO:文字を表示する
+     * @param code 文字コード。, eg: 0x30
+     */
+    //% block
+    export function ShowString(pStr: string): void {
+        for (let i = 0; i < pStr.length; i++) {
+            moji(pStr.substr(i, 1).charCodeAt(0))
+            basic.pause(500)
+        }
+    }
 }
