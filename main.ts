@@ -80,14 +80,14 @@ namespace baibit {
         baibitbright = bright
         baibitstrip.setBrightness(bright)
     }
-    let hart: number = 0x0CF3FCC
+    let heart: number = 0x0CF3FCC
     /**
      * TODO:アイコンを表示する
      * @param iconno アイコンの番号。, eg: 1
      */
     //% block
     export function icon(iconno: number): void {
-        allled(hart)
+        allled(heart)
     }
 
 }
