@@ -2,6 +2,7 @@
  * BaiBit Control blocks
  */
 //% weight=100 color=#0fbc11 icon=""
+let initflag = 0
 let baibitstrip: neopixel.Strip
 let baibitcolor: number = 255 * 65536 + 255 * 256 + 255
 let baibitbright: number = 20
@@ -26,6 +27,7 @@ namespace baibit {
      */
     //% block
     export function plot(x: number, y: number): void {
+        if (initflag == 0) { init(); initflag = 1 }
         baipoint[x * 5 + y] = true
         baibitstrip.setPixelColor(x * 5 + y, baibitcolor)
         baibitstrip.show()
@@ -37,6 +39,7 @@ namespace baibit {
      */
     //% block
     export function unplot(x: number, y: number): void {
+        if (initflag == 0) { init(); initflag = 1 }
         baipoint[x * 5 + y] = false
         baibitstrip.setPixelColor(x * 5 + y, 0)
         baibitstrip.show()
@@ -64,6 +67,7 @@ namespace baibit {
      */
     //% block
     export function brightness(bright: number): void {
+        if (initflag == 0) { init(); initflag = 1 }
         baibitbright = bright
         baibitstrip.setBrightness(bright)
     }
@@ -81,6 +85,7 @@ namespace baibit {
      */
     //% block
     export function displayFont(font: string): void {
+        if (initflag == 0) { init(); initflag = 1 }
         for (let x = 0; x < 5; x++) {
             let line = font.charCodeAt(x) - 0x30
             for (let y = 0; y < 5; y++) {
@@ -101,7 +106,7 @@ namespace baibit {
     export function moji(mojicode: number): void {
         if (mojicode >= 0x20 && mojicode <= 0x7e) {
             displayFont(baibitAlfa[mojicode - 0x20])
-        } else if (mojicode >= 0xa0 && mojicode <= 0xdf){
+        } else if (mojicode >= 0xa0 && mojicode <= 0xdf) {
             displayFont(baibitKana[mojicode - 0xa0])
         }
     }
