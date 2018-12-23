@@ -104,9 +104,10 @@ namespace baibit {
      */
     //% block
     export function moji(mojicode: number): void {
-        if (mojicode >= 0x20 && mojicode <= 0x7e) {
+        ShowHex(mojicode)
+        if ((mojicode >= 0x20) && (mojicode <= 0x7e)) {
             displayFont(baibitAlfa[mojicode - 0x20])
-        } else if (mojicode >= 0xa0 && mojicode <= 0xdf) {
+        } else if ((mojicode >= 0xa0) && (mojicode <= 0xdf)) {
             displayFont(baibitKana[mojicode - 0xa0])
         }
     }
@@ -119,6 +120,22 @@ namespace baibit {
         for (let i = 0; i < pStr.length; i++) {
             moji(pStr.charCodeAt(i))
             basic.pause(500)
+        }
+    }
+    /**
+     * TODO:文字を表示する
+     * @param code 文字コード。, eg: 0x30
+     */
+    //% block
+    export function ShowHex(n: number): void {
+        for (let x = 0; x < 5; x++) {
+            for (let y = 0; y < 5; y++) {
+                if ((n & 1 << (x * 5 + (4 - y))) != 0) {
+                    led.plot(x, y)
+                } else {
+                    led.unplot(x, y)
+                }
+            }
         }
     }
     control.inBackground(function () {

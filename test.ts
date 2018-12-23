@@ -2,4 +2,6 @@
 baibit.init()
 basic.forever(function () {
     baibit.icon(0)
+    basic.pause(500)
+    baibit.ShowString("ｱｲｳｴｵ")
 })
