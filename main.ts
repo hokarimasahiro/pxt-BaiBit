@@ -9,8 +9,10 @@ let baibitbright: number = 20
 let baipoint: boolean[] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 const baibitIcon: string[] = ["<N?N<", "0<6<0", "21248", "A:4:A", "29192", "1:2:1", "1:1:1", "C:3:C", "8:2:8", "0B5B0", "D447G", "HKAKH", "@A2D@", "@O?O@", "676ON", "8NN64", "4?N?4", "4><>4", "KK4KK", "9:L:9", "?FOF?", "02O20", "@O230", "<GOG<", ";IOH8", "HN2>8", "O7M70", "L676L", "33O00", "33O84", "L4O4L", "4>K>4", "26:62", "O9531", ":E:E:", "4:A:4", "04:40", "OAAAO", "0>:>0", "KK4:A"]
 const baibitAllow: string[] = []
-const baibitAlfa: string[] = ["00000", "0M000", "0H0H0", ":O:O:", ":MEG:", "IB49C", ":EE:1", "0H000", "0>A00", "0A>00", "0:4:0", "04>40", "01200", "04440", "02000", "1248@", ">AA>0", "09O10", "CEE90", "BAEJ0", "6:BO2", "MEEEB", "25=E2", "ABDH@", ":EEE:", "8EFD8", "0:000", "01:00", "04:A0", "0:::0", "0A:40", "8@ED8", ">AEB>", "?DD?0", "OEE:0", ">AAA0", "OAA>0", "OEEAA", "ODD@0", ">AAE6", "O44O0", "AOA00", "BAAN@", "O4:A0", "O1110", "O848O", "O842O", ">AA>0", "ODD80", "<BC=0", "ODD:1", "9EEB0", "@@O@@", "N11N0", "L212L", "O242O", "K44K0", "@878@", "CEIA0", "0OAA0", "@8421", "0AAO0", "08@80", "11111", "0@800", "699?1", "O5520", "69990", "255O0", ">EE90", "4?D@0", "8EEN0", "O4430", "0G000", "011F0", "O4:10", "0N110", "?848?", "?8870", "69960", "?::40", "4::?0", "78880", "15:80", "0N551", ">11?1", "<212<", "?121?", "96690", "95248", "9;=90", "04OA0", "0O000", "AO400", "04422"]
-const baibitKana: string[] = ["00000", "25200", "00N@@", "11?00", "21000", "00400", "@DEEN", "8?:<0", "12780", "04=60", "05750", "56?40", "4?460", "55710", "0EEO0", "45240", "44444", "@AFDH", "4478@", "<9I9>", "AAOAA", "9:<O8", "9:L9>", "::O::", "8AABL", "4I9>8", "AAAAO", "8M9N8", "EEA2L", "ABDJA", "8N99=", "H112L", "99EBL", "5EEND", "H1I1N", "5EFD4", "0O420", "99N88", "1AAA1", "AEBBM", "9:K:=", "1124H", "1N0L3", "N9999", "AABDH", "78421", ";8O8;", "@DBEH", "0EEE1", "3=A53", "1:4J0", "DOEEE", "8O8:<", "AAAO1", "EEEEO", "EEEEF", "L111N", "O0O16", "O1116", "OAAAO", "HAAAN", "AAA2L", "000HH", "0008D"]
+const baibitAlfaStr: string = " !" + '"' + "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
+const baibitAlfaFont: string[] = ["00000", "0M000", "0H0H0", ":O:O:", ":MEG:", "IB49C", ":EE:1", "0H000", "0>A00", "0A>00", "0:4:0", "04>40", "01200", "04440", "02000", "1248@", ">AA>0", "09O10", "CEE90", "BAEJ0", "6:BO2", "MEEEB", "25=E2", "ABDH@", ":EEE:", "8EFD8", "0:000", "01:00", "04:A0", "0:::0", "0A:40", "8@ED8", ">AEB>", "?DD?0", "OEE:0", ">AAA0", "OAA>0", "OEEAA", "ODD@0", ">AAE6", "O44O0", "AOA00", "BAAN@", "O4:A0", "O1110", "O848O", "O842O", ">AA>0", "ODD80", "<BC=0", "ODD:1", "9EEB0", "@@O@@", "N11N0", "L212L", "O242O", "K44K0", "@878@", "CEIA0", "0OAA0", "@8421", "0AAO0", "08@80", "11111", "0@800", "699?1", "O5520", "69990", "255O0", ">EE90", "4?D@0", "8EEN0", "O4430", "0G000", "011F0", "O4:10", "0N110", "?848?", "?8870", "69960", "?::40", "4::?0", "78880", "15:80", "0N551", ">11?1", "<212<", "?121?", "96690", "95248", "9;=90", "04OA0", "0O000", "AO400", "04422"]
+const baibitKanaStr: string = " ｡｢｣､･ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝﾞﾟ"
+const baibitKanaFont: string[] = ["00000", "25200", "00N@@", "11?00", "21000", "00400", "@DEEN", "8?:<0", "12780", "04=60", "05750", "56?40", "4?460", "55710", "0EEO0", "45240", "44444", "@AFDH", "4478@", "<9I9>", "AAOAA", "9:<O8", "9:L9>", "::O::", "8AABL", "4I9>8", "AAAAO", "8M9N8", "EEA2L", "ABDJA", "8N99=", "H112L", "99EBL", "5EEND", "H1I1N", "5EFD4", "0O420", "99N88", "1AAA1", "AEBBM", "9:K:=", "1124H", "1N0L3", "N9999", "AABDH", "78421", ";8O8;", "@DBEH", "0EEE1", "3=A53", "1:4J0", "DOEEE", "8O8:<", "AAAO1", "EEEEO", "EEEEF", "L111N", "O0O16", "O1116", "OAAAO", "HAAAN", "AAA2L", "000HH", "0008D"]
 namespace baibit {
     /**
      * TODO:BaiBitを初期化する
@@ -106,9 +108,9 @@ namespace baibit {
     export function moji(mojicode: number): void {
         ShowHex(mojicode)
         if ((mojicode >= 0x20) && (mojicode <= 0x7e)) {
-            displayFont(baibitAlfa[mojicode - 0x20])
+            displayFont(baibitAlfaFont[mojicode - 0x20])
         } else if ((mojicode >= 0xa0) && (mojicode <= 0xdf)) {
-            displayFont(baibitKana[mojicode - 0xa0])
+            displayFont(baibitKanaFont[mojicode - 0xa0])
         }
     }
     /**
@@ -117,8 +119,18 @@ namespace baibit {
      */
     //% block
     export function ShowString(pStr: string): void {
+        let wmoji: string
         for (let i = 0; i < pStr.length; i++) {
-            moji(pStr.charCodeAt(i))
+            if (pStr.charCodeAt(i) < 0x7f) {
+                moji(pStr.charCodeAt(i))
+            } else {
+                for (let j = 0; j < baibitKanaStr.length; j++) {
+                    if (pStr.charAt(i) == baibitKanaStr.charAt(j)) {
+                        moji(j + 0xa0)
+                        break
+                    }
+                }
+            }
             basic.pause(500)
         }
     }
@@ -129,11 +141,11 @@ namespace baibit {
     //% block
     export function ShowHex(n: number): void {
         for (let x = 0; x < 5; x++) {
-            for (let y = 0; y < 5; y++) {
-                if ((n & 1 << (x * 5 + (4 - y))) != 0) {
-                    led.plot(x, y)
+            for (let y = 0; y < 4; y++) {
+                if ((n & 1 << (x * 4 + y)) != 0) {
+                    led.plot(4 - x, 4 - y)
                 } else {
-                    led.unplot(x, y)
+                    led.unplot(4 - x, 4 - y)
                 }
             }
         }
