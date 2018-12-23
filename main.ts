@@ -121,7 +121,7 @@ namespace baibit {
     export function ShowString(pStr: string): void {
         let wmoji: string
         for (let i = 0; i < pStr.length; i++) {
-            if (pStr.charCodeAt(i) < 0x7f) {
+            if (pStr.charCodeAt(i) >= 0x20 && pStr.charCodeAt(i) < 0x7f) {
                 moji(pStr.charCodeAt(i))
             } else {
                 for (let j = 0; j < baibitKanaStr.length; j++) {
