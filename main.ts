@@ -13,6 +13,19 @@ const baibitAlfa: string[] = ["00000", "0M000", "0H0H0", ":O:O:", ":MEG:", "IB49
 const baibitKana: string[] = ["00000", "25200", "00N@@", "11?00", "21000", "00400", "@DEEN", "8?:<0", "12780", "04=60", "05750", "56?40", "4?460", "55710", "0EEO0", "45240", "44444", "@AFDH", "4478@", "<9I9>", "AAOAA", "9:<O8", "9:L9>", "::O::", "8AABL", "4I9>8", "AAAAO", "8M9N8", "EEA2L", "ABDJA", "8N99=", "H112L", "99EBL", "5EEND", "H1I1N", "5EFD4", "0O420", "99N88", "1AAA1", "AEBBM", "9:K:=", "1124H", "1N0L3", "N9999", "AABDH", "78421", ";8O8;", "@DBEH", "0EEE1", "3=A53", "1:4J0", "DOEEE", "8O8:<", "AAAO1", "EEEEO", "EEEEF", "L111N", "O0O16", "O1116", "OAAAO", "HAAAN", "AAA2L", "000HH", "0008D"]
 namespace baibit {
     /**
+     * TODO: 数値を16進形式で表示する
+     * @param n 数値。, eg: 12345
+     */
+    //% block
+    export function ShowNumber(n: number): void {
+        for (let y = 0; y < 5; y++) {
+            for (let x = 0; x < 4; x++) {
+                if ((n & 1 << (19 - (y * 4 + x))) != 0) led.plot(x + 1, y)
+                else led.unplot(x + 1, y)
+            }
+        }
+    }
+    /**
      * TODO:BaiBitを初期化する
      */
     //% block
@@ -104,11 +117,22 @@ namespace baibit {
      */
     //% block
     export function moji(mojicode: number): void {
+        ShowNumber(mojicode); basic.pause(500)
         if (mojicode >= 0x20 && mojicode <= 0x7e) {
             displayFont(baibitAlfa[mojicode - 0x20])
-        } else if (mojicode >= 0xa0 && mojicode <= 0xdf) {
-            displayFont(baibitKana[mojicode - 0xa0])
+        } else if (mojicode == 0xa0) {
+            displayFont(baibitKana[0])
+        } else if (mojicode >= 0x0ff61 && mojicode <= 0x0ff9f) {
+            displayFont(baibitKana[mojicode - 0x0ff60])
         }
+    }
+    /**
+     * TODO:文字を表示する
+     * @param code 文字コード。, eg: 0x30
+     */
+    //% block
+    export function moji2(mojicode: string): void {
+        ShowNumber(mojicode.charCodeAt(0)); basic.pause(500)
     }
     /**
      * TODO:文字を表示する
@@ -117,7 +141,7 @@ namespace baibit {
     //% block
     export function ShowString(pStr: string): void {
         for (let i = 0; i < pStr.length; i++) {
-            moji(pStr.charCodeAt(i))
+            moji2(pStr.substr(i))
             basic.pause(500)
         }
     }
