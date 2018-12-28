@@ -101,51 +101,40 @@ namespace baibit {
         baibitstrip.show()
     }
     /**
-     * TODO:文字を表示する
-     * @param code 文字コード。, eg: 0x30
-     */
-    //% block
-    export function moji(mojicode: number): void {
-        ShowHex(mojicode)
-        if ((mojicode >= 0x20) && (mojicode <= 0x7e)) {
-            displayFont(baibitAlfaFont[mojicode - 0x20])
-        } else if ((mojicode >= 0xa0) && (mojicode <= 0xdf)) {
-            displayFont(baibitKanaFont[mojicode - 0xa0])
-        }
-    }
-    /**
-     * TODO:文字を表示する
-     * @param code 文字コード。, eg: 0x30
+     * TODO:文字列を表示する
+     * @param pStr 文字列。, eg: "Abcdｱｲｳｴｵ"
      */
     //% block
     export function ShowString(pStr: string): void {
-        let wmoji: string
         for (let i = 0; i < pStr.length; i++) {
-            if (pStr.charCodeAt(i) >= 0x20 && pStr.charCodeAt(i) < 0x7f) {
-                moji(pStr.charCodeAt(i))
-            } else {
-                for (let j = 0; j < baibitKanaStr.length; j++) {
-                    if (pStr.charAt(i) == baibitKanaStr.charAt(j)) {
-                        moji(j + 0xa0)
-                        break
-                    }
+            ShowHex(pStr.charCodeAt(i))
+            for (let j = 0; j < baibitAlfaStr.length; j++) {
+                if (pStr.charAt(i) == baibitAlfaStr.charAt(j)) {
+                    displayFont(baibitAlfaFont[j])
+                    break
+                }
+            }
+            for (let j = 0; j < baibitKanaStr.length; j++) {
+                if (pStr.charAt(i) == baibitKanaStr.charAt(j)) {
+                    displayFont(baibitKanaFont[j])
+                    break
                 }
             }
             basic.pause(500)
         }
     }
     /**
-     * TODO:文字を表示する
-     * @param code 文字コード。, eg: 0x30
+     * TODO:数値を16進形式で表示する
+     * @param n 数値。, eg: 0xab30
      */
     //% block
     export function ShowHex(n: number): void {
         for (let x = 0; x < 5; x++) {
             for (let y = 0; y < 4; y++) {
                 if ((n & 1 << (x * 4 + y)) != 0) {
-                    led.plot(4 - x, 4 - y)
+                    led.plot(4 - y, 4 - x)
                 } else {
-                    led.unplot(4 - x, 4 - y)
+                    led.unplot(4 - y, 4 - x)
                 }
             }
         }
