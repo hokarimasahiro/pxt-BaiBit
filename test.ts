@@ -2,8 +2,10 @@
 baibit.init()
 basic.clearScreen()
 baibit.clear()
+basic.showNumber(1)
 baibit.SetScrollMode(0)
-baibit.ShowString("A")
+baibit.ShowString("ABC")
+basic.clearScreen()
 /*basic.forever(function () {
     basic.showNumber(1)
     baibit.clear()
