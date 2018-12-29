@@ -107,12 +107,28 @@ namespace baibit {
      */
     //% block
     export function displayFont(f: number): void {
-        for(let x=0;x<5;x++){
-            for(let y=0;y<5;y++){
+        for (let x = 0; x < 5; x++) {
+            for (let y = 0; y < 5; y++) {
                 if ((f & 1 << (x * 5 + y)) != 0) {
                     plot(4 - y, 4 - x)
                 } else {
                     unplot(4 - y, 4 - x)
+                }
+            }
+        }
+    }
+    /**
+     * TODO:フォントを表示する
+     * @param フォント 。, eg: 0x12345
+     */
+    //% block
+    export function displayFont2(f: number): void {
+        for (let x = 0; x < 5; x++) {
+            for (let y = 0; y < 5; y++) {
+                if ((f & 1 << (x * 5 + y)) != 0) {
+                    led.plot(4 - y, 4 - x)
+                } else {
+                    led.unplot(4 - y, 4 - x)
                 }
             }
         }
@@ -139,7 +155,7 @@ namespace baibit {
         let lines: number[] = [0, 0, 0, 0]
         for (i = 0; i < pStr.length; i++) {
             if (i > 0 && ScrollMode != 0) lines.push(0)
-            for (j = 0; j < AlfaStr.length; j++) {
+            for (j = 0; j < AlfaFont.length; j++) {
                 if (pStr.charAt(i) == AlfaStr.charAt(j)) {
                     if (ScrollMode == 0) {
                         sp = 0; ep = 4
@@ -192,6 +208,7 @@ namespace baibit {
                 }
             }
         }
+        basic.showNumber(lines.length)
         if (pStr.length == 1) {
             for (i = 0; i < 5; i++) {
                 for (j = 0; j < 5; j++) {
