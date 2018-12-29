@@ -1,7 +1,10 @@
 // tests go here; this will not be compiled when this package is used as a librarybasic.fo
 baibit.init()
 basic.clearScreen()
-basic.forever(function () {
+baibit.clear()
+baibit.SetScrollMode(0)
+baibit.ShowString("A")
+/*basic.forever(function () {
     basic.showNumber(1)
     baibit.clear()
     baibit.SetScrollMode(0)
@@ -28,4 +31,4 @@ basic.forever(function () {
     baibit.ShowString("ABC")
     basic.clearScreen()
     basic.pause(1000)
-})
+})*/

@@ -5,8 +5,7 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "neopixel": "github:microsoft/pxt-neopixel#v0.6.10",
-        "pxt-katakana": "github:mbitfun/pxt-katakana#v1.0.16"
+        "neopixel": "github:microsoft/pxt-neopixel#v0.6.10"
     },
     "files": [
         "README.md",

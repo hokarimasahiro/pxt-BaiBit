@@ -99,26 +99,29 @@ namespace baibit {
      */
     //% block
     export function icon(iconno: number): void {
-        displayFont(Icon[iconno])
+        displayFont(Font2Number(Icon[iconno]))
     }
     /**
-     * TODO:文字列のフォントをlongに変換する
-     * @param FONT 文字列フォント。, eg: "01010"
+     * TODO:フォントを表示する
+     * @param フォント 。, eg: 0x12345
      */
     //% block
-    export function displayFont(font: string): void {
-        if (initflag == 0) { init(); initflag = 1 }
-        for (let x = 0; x < 5; x++) {
-            let line = font.charCodeAt(x) - 0x30
-            for (let y = 0; y < 5; y++) {
-                if ((line & (1 << (4 - y))) != 0) {
-                    baibitstrip.setPixelColor(x * 5 + y, baibitcolor)
+    export function displayFont(f: number): void {
+        for(let x=0;x<5;x++){
+            for(let y=0;y<5;y++){
+                if ((f & 1 << (x * 5 + y)) != 0) {
+                    plot(4 - y, 4 - x)
                 } else {
-                    baibitstrip.setPixelColor(x * 5 + y, 0)
+                    unplot(4 - y, 4 - x)
                 }
             }
         }
     }
+    /**
+     * TODO:フォント文字列をビット列に変換する
+     * @param f フォント文字列。, eg: ??DD0
+     */
+    //% block
     export function Font2Number(f: string): number {
         let r = 0
         for (let i = 0; i < 5; i++) {
