@@ -15,10 +15,10 @@ namespace baibit {
     const AlfaFont: string[] = ["00000", "0M000", "0H0H0", ":O:O:", ":MEG:", "IB49C", ":EE:1", "0H000", "0>A00", "0A>00", "0:4:0", "04>40", "01200", "04440", "02000", "1248@", ">AA>0", "09O10", "CEE90", "BAEJ0", "6:BO2", "MEEEB", "25=E2", "ABDH@", ":EEE:", "8EFD8", "0:000", "01:00", "04:A0", "0:::0", "0A:40", "8@ED8", ">AEB>", "?DD?0", "OEE:0", ">AAA0", "OAA>0", "OEEAA", "ODD@0", ">AAE6", "O44O0", "AOA00", "BAAN@", "O4:A0", "O1110", "O848O", "O842O", ">AA>0", "ODD80", "<BC=0", "ODD:1", "9EEB0", "@@O@@", "N11N0", "L212L", "O242O", "K44K0", "@878@", "CEIA0", "0OAA0", "@8421", "0AAO0", "08@80", "11111", "0@800", "699?1", "O5520", "69990", "255O0", ">EE90", "4?D@0", "8EEN0", "O4430", "0G000", "011F0", "O4:10", "0N110", "?848?", "?8870", "69960", "?::40", "4::?0", "78880", "15:80", "0N551", ">11?1", "<212<", "?121?", "96690", "95248", "9;=90", "04OA0", "0O000", "AO400", "04422"]
     const KanaStr: string = "ﾞﾟ ｡｢｣､･ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ"
     const KanaFont: string[] = ["HH000", "8D800", "00000", "25200", "00N@@", "11?00", "21000", "00400", "@DEEN", "8?:<0", "12780", "04=60", "05750", "56?40", "4?460", "55710", "0EEO0", "45240", "44444", "@AFDH", "4478@", "<9I9>", "AAOAA", "9:<O8", "9:L9>", "::O::", "8AABL", "4I9>8", "AAAAO", "8M9N8", "EEA2L", "ABDJA", "8N99=", "H112L", "99EBL", "5EEND", "H1I1N", "5EFD4", "0O420", "99N88", "1AAA1", "AEBBM", "9:K:=", "1124H", "1N0L3", "N9999", "AABDH", "78421", ";8O8;", "@DBEH", "0EEE1", "3=A53", "1:4J0", "DOEEE", "8O8:<", "AAAO1", "EEEEO", "EEEEF", "L111N", "O0O16", "O1116", "OAAAO", "HAAAN", "AAA2L"]
-    const DakuonStr: string = "ｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾊﾋﾌﾍﾎｳ"
-    const DakuonFont: string[] = ["9:L9N", "::O:J", "499:L", "4I9>H", "9999O", "8M9NH", "EEA2D", "ABD:A", "8N99M", "H112D", "5I=:L", "5EE>D", "H1I1F", "5EF4D", "0O42@", "1N0LC", "N999I", "99:<@", "7842A", ";8O8K", "<9I9N"]
-    const HandakuonStr: string = "ﾊﾋﾌﾍﾎ"
-    const HandakuonFont: string[] = ["1N0LK", "N99II", "99:LH", "784BA", ";8OHK"]
+    //const DakuonStr: string = "ｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾊﾋﾌﾍﾎｳ"
+    //const DakuonFont: string[] = ["9:L9N", "::O:J", "499:L", "4I9>H", "9999O", "8M9NH", "EEA2D", "ABD:A", "8N99M", "H112D", "5I=:L", "5EE>D", "H1I1F", "5EF4D", "0O42@", "1N0LC", "N999I", "99:<@", "7842A", ";8O8K", "<9I9N"]
+    //const HandakuonStr: string = "ﾊﾋﾌﾍﾎ"
+    //const HandakuonFont: string[] = ["1N0LK", "N99II", "99:LH", "784BA", ";8OHK"]
     let Mode = 0    //0:NeoPixel,1:PIC12F1822,2:
     let ScrollMode = 0    //0:Not Scroll,1:Scroll
     let ScrollSpeed = 500
@@ -49,25 +49,25 @@ namespace baibit {
             if (KanaStr.indexOf(pStr.charAt(i)) >= 0) {
                 Font = KanaFont[KanaStr.indexOf(pStr.charAt(i))]
                 if (ScrollMode == 0 && i > 0) {
-                    if (KanaStr.indexOf(pStr.charAt(i)) == 0) {
-                        if (DakuonStr.indexOf(pStr.charAt(i - 1)) >= 0) {
-                            Font = DakuonFont[DakuonStr.indexOf(pStr.charAt(i - 1))]
-                            for (let k = 0; i < 5; k++) {
-                                lines[lines.length - 5 + k] = Font.charCodeAt(k) - 0x30
-                            }
-                        }
-                        sp = -1; ep = 0
-                    } else if (KanaStr.indexOf(pStr.charAt(i)) == 1) {
-                        if (HandakuonStr.indexOf(pStr.charAt(i - 1)) >= 0) {
-                            Font = HandakuonFont[HandakuonStr.indexOf(pStr.charAt(i - 1))]
-                            for (let k = 0; i < 5; k++) {
-                                lines[lines.length - 5 + k] = Font.charCodeAt(k) - 0x30
-                            }
-                        }
-                        sp = -1; ep = 0
-                    } else {
-                        sp = 0; ep = 4
-                    }
+                    /*                    if (KanaStr.indexOf(pStr.charAt(i)) == 0) {
+                                            if (DakuonStr.indexOf(pStr.charAt(i - 1)) >= 0) {
+                                                Font = DakuonFont[DakuonStr.indexOf(pStr.charAt(i - 1))]
+                                                for (let k = 0; i < 5; k++) {
+                                                    lines[lines.length - 5 + k] = Font.charCodeAt(k) - 0x30
+                                                }
+                                            }
+                                            sp = -1; ep = 0
+                                        } else if (KanaStr.indexOf(pStr.charAt(i)) == 1) {
+                                            if (HandakuonStr.indexOf(pStr.charAt(i - 1)) >= 0) {
+                                                Font = HandakuonFont[HandakuonStr.indexOf(pStr.charAt(i - 1))]
+                                                for (let k = 0; i < 5; k++) {
+                                                    lines[lines.length - 5 + k] = Font.charCodeAt(k) - 0x30
+                                                }
+                                            }
+                                            sp = -1; ep = 0
+                                        } else {
+                                            sp = 0; ep = 4
+                                        }*/
                 } else {
                     if (KanaStr.indexOf(pStr.charAt(i)) != 0 && KanaStr.indexOf(pStr.charAt(i)) != 1 && i > 0)
                         lines.push(0)
